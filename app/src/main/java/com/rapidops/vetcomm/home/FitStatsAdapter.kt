@@ -17,18 +17,19 @@
 
 package com.rapidops.vetcomm.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.semantics.text
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.devrel.android.fitactions.R
-import kotlinx.android.synthetic.main.fit_stats_row.view.*
 import com.rapidops.vetcomm.model.FitActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import com.rapidops.vetcomm.R
 
 class FitStatsAdapter : ListAdapter<FitActivity, FitStatsAdapter.ViewHolder>(DIFF) {
 
@@ -64,6 +65,7 @@ class FitStatsAdapter : ListAdapter<FitActivity, FitStatsAdapter.ViewHolder>(DIF
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        @SuppressLint("DefaultLocale")
         fun bind(activity: FitActivity, max: Int) {
             val context = itemView.context
             val calendar = Calendar.getInstance().apply { timeInMillis = activity.date }
@@ -73,25 +75,27 @@ class FitStatsAdapter : ListAdapter<FitActivity, FitStatsAdapter.ViewHolder>(DIF
                 Locale.getDefault()
             )
             val monthFormatter = SimpleDateFormat("MM")
-            itemView.statsRowTitle.text = context.getString(
-                R.string.stat_date,
-                day,
-                calendar.get(Calendar.DAY_OF_MONTH),
-                monthFormatter.format(calendar.time).toInt()
-            )
+//            itemView.statsRowTitle.text = context.getString(
+//                R.string.stat_date,
+//                day,
+//                calendar.get(Calendar.DAY_OF_MONTH),
+//                monthFormatter.format(calendar.time).toInt()
+//            )
 
             val minutes = TimeUnit.MILLISECONDS.toMinutes(activity.durationMs)
             val km = String.format("%.2f", activity.distanceMeters / 1000)
             val duration = context.getString(R.string.stat_duration, minutes)
             val distance = context.getString(R.string.stat_distance, km)
-            itemView.statsRowContent.apply {
-                text = duration
-                append("\n")
-                append(distance)
-            }
+//            itemView.statsRowContent.apply {
+//                text = duration
+//                append("\n")
+//                append(distance)
+//            }
 
-            itemView.statsRowProgress.max = max
-            itemView.statsRowProgress.progress = activity.distanceMeters.toInt()
+//            itemView.statsRowContent.text = "$duration\n$distance"
+//
+//            itemView.statsRowProgress.max = max
+//            itemView.statsRowProgress.progress = activity.distanceMeters.toInt()
         }
     }
 }

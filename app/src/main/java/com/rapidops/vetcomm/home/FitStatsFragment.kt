@@ -23,10 +23,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.devrel.android.fitactions.R
-import com.devrel.android.fitactions.databinding.FitStatsFragmentBinding
-import com.devrel.android.fitactions.model.FitRepository
 import androidx.recyclerview.widget.RecyclerView
+import com.rapidops.vetcomm.R
+
+import com.rapidops.vetcomm.databinding.FitStatsFragmentBinding
+import com.rapidops.vetcomm.model.FitRepository
 import java.util.concurrent.TimeUnit
 
 /**
@@ -54,16 +55,16 @@ class FitStatsFragment : Fragment() {
 
         val repository = FitRepository.getInstance(requireContext())
         repository.getStats().observe(viewLifecycleOwner, Observer { fitStats ->
-            statsActivityCount.text = getString(
-                R.string.stats_total_count,
-                fitStats.totalCount
-            )
-            statsDistanceCount.text = getString(
-                R.string.stats_total_distance,
-                fitStats.totalDistanceMeters.toInt()
-            )
-            val durationInMin = TimeUnit.MILLISECONDS.toMinutes(fitStats.totalDurationMs)
-            statsDurationCount.text = getString(R.string.stats_total_duration, durationInMin)
+//            statsActivityCount.text = getString(
+//                R.string.stats_total_count,
+//                fitStats.totalCount
+//            )
+//            statsDistanceCount.text = getString(
+//                R.string.stats_total_distance,
+//                fitStats.totalDistanceMeters.toInt()
+//            )
+//            val durationInMin = TimeUnit.MILLISECONDS.toMinutes(fitStats.totalDurationMs)
+//            statsDurationCount.text = getString(R.string.stats_total_duration, durationInMin)
         })
 
         repository.getLastActivities(10).observe(viewLifecycleOwner, Observer {

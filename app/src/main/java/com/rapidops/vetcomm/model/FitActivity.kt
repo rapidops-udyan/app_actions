@@ -21,7 +21,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.devrel.android.fitactions.R
 
 import com.rapidops.vetcomm.R
 

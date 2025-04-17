@@ -52,4 +52,5 @@
     <string name="widget_activity_speech">Your last %1$s activity was on %2$s and it was for %3$d minutes and %4$.2f kilometers.</string>
     <string name="widget_activity_text">Your last %1$s activity was on %2$s.</string>
     <string name="widget_no_data">No activity found</string>
+    <string name="widget_distance">Distance: %1$.2f km </string>
 </resources>

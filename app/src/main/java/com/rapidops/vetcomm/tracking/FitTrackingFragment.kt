@@ -26,10 +26,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.devrel.android.fitactions.R
-import com.devrel.android.fitactions.model.FitActivity
-import com.devrel.android.fitactions.model.FitRepository
-import kotlinx.android.synthetic.main.fit_tracking_fragment.*
+
+import com.rapidops.vetcomm.R
+import com.rapidops.vetcomm.model.FitActivity
+import com.rapidops.vetcomm.model.FitRepository
+import com.rapidops.vetcomm.tracking.FitTrackingService
 import java.util.concurrent.TimeUnit
 
 /**
@@ -73,7 +74,7 @@ import java.util.concurrent.TimeUnit
             countDownMs = millisUntilFinished
 
             val secondsLeft = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished).toString()
-            startActivityCountDown.text = secondsLeft
+//            startActivityCountDown.text = secondsLeft
         }
     }
 
@@ -87,21 +88,21 @@ import java.util.concurrent.TimeUnit
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        startActivityButton.setOnClickListener {
-            // Handle the two states of the activity button
-            // If activity started, stop it and notify activity.
-            // Otherwise start the tracking service.
-            val fitActivity = fitRepository.getOnGoingActivity().value
-            if (fitActivity == null) {
-                startTrackingService()
-            } else {
-                requireActivity().stopService(fitServiceIntent)
-                actionsCallback.onActivityStopped(fitActivity.id)
-            }
-        }
+//        startActivityButton.setOnClickListener {
+//            // Handle the two states of the activity button
+//            // If activity started, stop it and notify activity.
+//            // Otherwise start the tracking service.
+//            val fitActivity = fitRepository.getOnGoingActivity().value
+//            if (fitActivity == null) {
+//                startTrackingService()
+//            } else {
+//                requireActivity().stopService(fitServiceIntent)
+//                actionsCallback.onActivityStopped(fitActivity.id)
+//            }
+//        }
 
         // Observe the ongoing activity and update the view accordingly.
-        fitRepository.getOnGoingActivity().observe(this, Observer {
+        fitRepository.getOnGoingActivity().observe(viewLifecycleOwner, Observer {
             if (it == null) {
                 // When no ongoing activity only start the countdown if we haven't already.
                 if (countDownMs > 0) {
@@ -137,23 +138,23 @@ import java.util.concurrent.TimeUnit
      * Update the count down view
      */
     private fun onCountDown() {
-        val type = arguments?.getSerializable(PARAM_TYPE) as? FitActivity.Type
-            ?: FitActivity.Type.UNKNOWN
-        startActivityTitle.text = getString(R.string.start_activity_title, type.name.toLowerCase())
-        startActivityCountDown.text = TimeUnit.MILLISECONDS.toSeconds(countDownMs).toString()
-        startActivityButton.isSelected = false
+//        val type = arguments?.getSerializable(PARAM_TYPE) as? FitActivity.Type
+//            ?: FitActivity.Type.UNKNOWN
+//        startActivityTitle.text = getString(R.string.start_activity_title, type.name.toLowerCase())
+//        startActivityCountDown.text = TimeUnit.MILLISECONDS.toSeconds(countDownMs).toString()
+//        startActivityButton.isSelected = false
     }
 
     /**
      * Update the tracking view
      */
     private fun onTracking(activity: FitActivity) {
-        startActivityTitle.setText(R.string.tracking_notification_title)
-        startActivityCountDown.text = getString(
-            R.string.stats_tracking_distance,
-            activity.distanceMeters.toInt()
-        )
-        startActivityButton.isSelected = true
+//        startActivityTitle.setText(R.string.tracking_notification_title)
+//        startActivityCountDown.text = getString(
+//            R.string.stats_tracking_distance,
+//            activity.distanceMeters.toInt()
+//        )
+//        startActivityButton.isSelected = true
     }
 
     interface FitTrackingActions {

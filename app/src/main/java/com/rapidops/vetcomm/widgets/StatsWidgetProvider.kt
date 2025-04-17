@@ -17,11 +17,11 @@
 
 package com.rapidops.vetcomm.widgets
 
+import StatsWidget
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.os.Build
-import com.devrel.android.fitactions.R
 
 
 /**

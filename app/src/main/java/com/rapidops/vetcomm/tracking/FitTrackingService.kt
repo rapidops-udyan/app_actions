@@ -17,6 +17,7 @@
 
 package com.rapidops.vetcomm.tracking
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -54,7 +55,7 @@ class FitTrackingService : Service() {
      */
     private val notificationBuilder: NotificationCompat.Builder by lazy {
         val pendingIntent = Intent(this, FitMainActivity::class.java).let { notificationIntent ->
-            PendingIntent.getActivity(this, 0, notificationIntent, 0)
+            PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE)
         }
         NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle(getText(R.string.tracking_notification_title))
@@ -66,13 +67,14 @@ class FitTrackingService : Service() {
     /**
      * Observer that will update the notification with the ongoing activity status.
      */
+    @SuppressLint("DefaultLocale")
     private val trackingObserver: Observer<FitActivity> = Observer { fitActivity ->
-        fitActivity?.let {
+        fitActivity.let {
             val km = String.format("%.2f", it.distanceMeters / 1000)
             val notification = notificationBuilder // Changed "setContextText" to "setContentText"
                 .setContentText(getString(R.string.stat_distance, km))
                 .build()
-            NotificationManagerCompat.from(this).notify(ONGOING_NOTIFICATION_ID, notification)
+//            NotificationManagerCompat.from(this).notify(ONGOING_NOTIFICATION_ID, notification)
         }
     }
 

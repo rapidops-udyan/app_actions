@@ -21,7 +21,7 @@ import android.content.Context
 import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.switchMap
 import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -56,12 +56,13 @@ class FitRepository(private val fitDb: FitDatabase, private val ioExecutor: Exec
     private val currentTracker: MutableLiveData<Tracker?> by lazy {
         MutableLiveData<Tracker?>().apply { value = null }
     }
+
     /**
      * Keep the transformation as variable to avoid creating a new one
      * each time getOnGoingActivity is called.
      */
     private val _onGoingActivity: LiveData<FitActivity> by lazy {
-        Transformations.switchMap(currentTracker) {
+        currentTracker.switchMap {
             it ?: MutableLiveData<FitActivity>().apply { value = null }
         }
     }

@@ -25,11 +25,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment import com.rapidops.vetcomm.BiiIntents.START_EXERCISE import
-com.rapidops.vetcomm.BiiIntents.STOP_EXERCISE import com.rapidops.vetcomm.home.FitStatsFragment import
-com.rapidops.vetcomm.model.FitActivity import com.rapidops.vetcomm.model.FitRepository import
-com.rapidops.vetcomm.tracking.FitTrackingFragment import
-com.rapidops.vetcomm.tracking.FitTrackingService
+import androidx.fragment.app.Fragment
+import com.devrel.android.fitactions.tracking.FitTrackingFragment
+import com.rapidops.vetcomm.BiiIntents.START_EXERCISE
+import com.rapidops.vetcomm.BiiIntents.STOP_EXERCISE
+import com.rapidops.vetcomm.home.FitStatsFragment
+import com.rapidops.vetcomm.model.FitActivity
+import com.rapidops.vetcomm.model.FitRepository
+import com.rapidops.vetcomm.tracking.FitTrackingService
 import org.json.JSONObject
 
 /**
@@ -58,9 +61,14 @@ class FitMainActivity :
      *
      * See [launchMode](https://developer.android.com/guide/topics/manifest/activity-element#lmode)
      */
-    override fun onNewIntent(intent: Intent?) {
+//    override fun onNewIntent(intent: Intent?) {
+//        super.onNewIntent(intent)
+//        intent?.handleIntent()
+//    }
+
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        intent?.handleIntent()
+        intent.handleIntent()
     }
 
     /**
