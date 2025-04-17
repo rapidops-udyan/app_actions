@@ -23,7 +23,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
-android {    
+android {
+    namespace 'com.rapidops.vetcomm'
     compileSdkVersion 34
 
     compileOptions {
