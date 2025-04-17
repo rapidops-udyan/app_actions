@@ -15,7 +15,7 @@
  *
  */
 
-package com.devrel.android.fitactions
+package com.rapidops.vetcomm
 
 import android.app.assist.AssistContent
 import android.content.Intent
@@ -25,14 +25,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.devrel.android.fitactions.BiiIntents.START_EXERCISE
-import com.devrel.android.fitactions.BiiIntents.STOP_EXERCISE
-import com.devrel.android.fitactions.home.FitStatsFragment
-import com.devrel.android.fitactions.model.FitActivity
-import com.devrel.android.fitactions.model.FitRepository
-import com.devrel.android.fitactions.tracking.FitTrackingFragment
-import com.devrel.android.fitactions.tracking.FitTrackingService
+import androidx.fragment.app.Fragment import com.rapidops.vetcomm.BiiIntents.START_EXERCISE import
+com.rapidops.vetcomm.BiiIntents.STOP_EXERCISE import com.rapidops.vetcomm.home.FitStatsFragment import
+com.rapidops.vetcomm.model.FitActivity import com.rapidops.vetcomm.model.FitRepository import
+com.rapidops.vetcomm.tracking.FitTrackingFragment import
+com.rapidops.vetcomm.tracking.FitTrackingService
 import org.json.JSONObject
 
 /**
@@ -65,7 +62,6 @@ class FitMainActivity :
         super.onNewIntent(intent)
         intent?.handleIntent()
     }
-
 
     /**
      * For debugging Android intents
@@ -139,7 +135,6 @@ class FitMainActivity :
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
         } else {
-            updateView(FitStatsFragment::class.java)
         }
     }
 
@@ -167,16 +162,16 @@ class FitMainActivity :
         val startExercise = intent?.extras?.getString(START_EXERCISE)
         val stopExercise = intent?.extras?.getString(STOP_EXERCISE)
 
-        if (startExercise != null){
+        if (startExercise != null) {
             val type = FitActivity.Type.find(startExercise)
             val arguments = Bundle().apply {
                 putSerializable(FitTrackingFragment.PARAM_TYPE, type)
             }
             updateView(FitTrackingFragment::class.java, arguments)
-        } else if(stopExercise != null){
+        } else if (stopExercise != null) {
             // Stop the tracking service if any and return to home screen.
             stopService(Intent(this, FitTrackingService::class.java))
-            updateView(FitStatsFragment::class.java)
+            showDefaultView()
         } else{
             // path is not supported or invalid, start normal flow.
             showDefaultView()

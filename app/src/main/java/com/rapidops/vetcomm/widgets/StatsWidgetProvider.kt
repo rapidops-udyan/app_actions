@@ -15,11 +15,12 @@
  *
  */
 
-package com.devrel.android.fitactions.widgets
+package com.rapidops.vetcomm.widgets
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.os.Build
 import com.devrel.android.fitactions.R
 
 
@@ -32,14 +33,18 @@ class StatsWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        for (appWidgetId in appWidgetIds) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            for (appWidgetId in appWidgetIds) {
 
-            val currentWidget = StatsWidget(context,
-                appWidgetManager,
-                appWidgetId,
-                R.layout.stats_widget)
+                val currentWidget = StatsWidget(
+                    context,
+                    appWidgetManager,
+                    appWidgetId,
+                    com.rapidops.vetcomm.R.layout.stats_widget
+                )
 
-            currentWidget.updateAppWidget()
+                currentWidget.updateAppWidget()
+            }
 
         }
     }

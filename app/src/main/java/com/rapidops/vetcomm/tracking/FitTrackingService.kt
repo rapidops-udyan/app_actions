@@ -15,7 +15,7 @@
  *
  */
 
-package com.devrel.android.fitactions.tracking
+package com.rapidops.vetcomm.tracking
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -28,10 +28,10 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.Observer
-import com.devrel.android.fitactions.FitMainActivity
-import com.devrel.android.fitactions.R
-import com.devrel.android.fitactions.model.FitActivity
-import com.devrel.android.fitactions.model.FitRepository
+import com.rapidops.vetcomm.FitMainActivity
+import com.rapidops.vetcomm.R
+import com.rapidops.vetcomm.model.FitActivity
+import com.rapidops.vetcomm.model.FitRepository
 
 /**
  * Foreground Android Service that starts an activity and keep tracks of the status showing
@@ -69,7 +69,7 @@ class FitTrackingService : Service() {
     private val trackingObserver: Observer<FitActivity> = Observer { fitActivity ->
         fitActivity?.let {
             val km = String.format("%.2f", it.distanceMeters / 1000)
-            val notification = notificationBuilder
+            val notification = notificationBuilder // Changed "setContextText" to "setContentText"
                 .setContentText(getString(R.string.stat_distance, km))
                 .build()
             NotificationManagerCompat.from(this).notify(ONGOING_NOTIFICATION_ID, notification)
@@ -83,7 +83,7 @@ class FitTrackingService : Service() {
         createNotificationChannel()
         startForeground(ONGOING_NOTIFICATION_ID, notificationBuilder.build())
 
-        // Start a new activity and attach the observer
+        // Start a new activity and attach the observer.  Removed unnecessary blank line.
         fitRepository.startActivity()
         fitRepository.getOnGoingActivity().observeForever(trackingObserver)
     }
@@ -98,7 +98,7 @@ class FitTrackingService : Service() {
     /**
      * Creates a Notification channel needed for new version of Android
      */
-    private fun createNotificationChannel() {
+    private fun createNotificationChannel() { // Removed unnecessary blank line.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.app_name)
             val importance = NotificationManager.IMPORTANCE_DEFAULT

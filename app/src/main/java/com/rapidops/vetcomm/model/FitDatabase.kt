@@ -15,7 +15,7 @@
  *
  */
 
-package com.devrel.android.fitactions.model
+package com.rapidops.vetcomm.model
 
 import android.content.Context
 import androidx.lifecycle.LiveData

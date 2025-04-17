@@ -23,7 +23,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
-android {
+android {    
     compileSdkVersion 31
 
     // Configure only for each module that uses Java 8
@@ -39,7 +39,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    defaultConfig {
+    defaultConfig {        
         applicationId "PUT_YOUR_APPLICATION_ID_HERE"
         minSdkVersion 25
         targetSdkVersion 31
@@ -48,7 +48,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
-            annotationProcessorOptions {
+            annotationProcessorOptions {                
                 arguments = ["room.incremental": "true"]
             }
         }

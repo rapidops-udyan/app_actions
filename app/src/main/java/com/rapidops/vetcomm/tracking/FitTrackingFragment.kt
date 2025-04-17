@@ -40,7 +40,7 @@ import java.util.concurrent.TimeUnit
  *
  * The view will observe the status and update its content.
  */
-class FitTrackingFragment : Fragment() {
+ class FitTrackingFragment : Fragment() {
 
     companion object {
         /**

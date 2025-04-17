@@ -15,7 +15,7 @@
  *
  */
 
-package com.devrel.android.fitactions.model
+package com.rapidops.vetcomm.model
 
 /**
  * Entity that contains the total user stats.

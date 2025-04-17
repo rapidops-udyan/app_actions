@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,17 @@
  *
  */
 
-package com.devrel.android.fitactions
-
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+package com.rapidops.vetcomm
 
 /**
- * Create single use observer for activity LiveData
+ * Static object that defines the different BIIs
+ * https://developers.google.com/assistant/app/reference/built-in-intents
  */
-fun <T> LiveData<T>.observeOnce(observer: Observer<T>) {
-    observeForever(object : Observer<T> {
-        override fun onChanged(t: T?) {
-            observer.onChanged(t)
-            removeObserver(this)
-        }
-    })
+object BiiIntents {
+    const val START_EXERCISE = "exerciseType"
+    const val STOP_EXERCISE = "stopExercise"
+
+    object Actions {
+        const val ACTION_TOKEN_EXTRA = "actions.fulfillment.extra.ACTION_TOKEN"
+    }
 }

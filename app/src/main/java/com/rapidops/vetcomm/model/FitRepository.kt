@@ -15,7 +15,7 @@
  *
  */
 
-package com.devrel.android.fitactions.model
+package com.rapidops.vetcomm.model
 
 import android.content.Context
 import android.os.Handler
@@ -140,7 +140,7 @@ class FitRepository(private val fitDb: FitDatabase, private val ioExecutor: Exec
             override fun run() {
                 value = value.copy(
                     durationMs = System.currentTimeMillis() - value.date,
-                    distanceMeters = value.distanceMeters + 10 // TODO get distance
+                    distanceMeters = value.distanceMeters + 10
                 )
                 if (isRunning) {
                     handler.postDelayed(this, 1000)

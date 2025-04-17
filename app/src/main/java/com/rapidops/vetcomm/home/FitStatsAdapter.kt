@@ -15,7 +15,7 @@
  *
  */
 
-package com.devrel.android.fitactions.home
+package com.rapidops.vetcomm.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +24,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.devrel.android.fitactions.R
-import com.devrel.android.fitactions.model.FitActivity
 import kotlinx.android.synthetic.main.fit_stats_row.view.*
+import com.rapidops.vetcomm.model.FitActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit

@@ -15,7 +15,7 @@
  *
  */
 
-package com.devrel.android.fitactions.widgets
+package com.rapidops.vetcomm.widgets
 
 import android.appwidget.AppWidgetManager
 import android.content.Context
@@ -23,10 +23,10 @@ import android.text.format.DateFormat
 import android.widget.RemoteViews
 import com.devrel.android.fitactions.R
 import com.devrel.android.fitactions.model.FitActivity
-import com.devrel.android.fitactions.model.FitRepository
 import com.devrel.android.fitactions.observeOnce
 import com.google.assistant.appactions.widgets.AppActionsWidgetExtension
-import java.util.*
+import com.rapidops.vetcomm.model.FitRepository
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 
