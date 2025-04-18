@@ -116,7 +116,7 @@ class FitMainActivity :
             outContent.structuredData = JSONObject()
                 .put("@type", "ExerciseObservation")
                 .put("name", "My last runs")
-                .put("url", "https://fit-actions.firebaseapp.com/stats")
+                .put("url", "https://com.rapidops.vetcomm/stats")
                 .toString()
         }
     }

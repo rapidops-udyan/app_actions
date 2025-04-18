@@ -28,7 +28,7 @@ Clone or download the project to your preferred location. Then, import and modif
     android {
         defaultConfig {
             // This ID uniquely identifies your app on the device and in Google Play
-            applicationId "PUT_YOUR_APPLICATION_ID_HERE"
+            applicationId "com.rapidops.vetcomm"
         }
     }
     ```

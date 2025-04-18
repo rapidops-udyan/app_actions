@@ -65,7 +65,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="fit-actions.firebaseapp.com"
+                    android:host="com.rapidops.vetcomm"
                     android:scheme="https" />
             </intent-filter>
 
